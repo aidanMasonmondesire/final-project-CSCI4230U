@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    
+    <h1>To create an account, fill out the fields below:</h1>
+    <form method="post" action="{{ url_for('users_bp.register') }}">
+        <p>
+            <label for="username">Username:</label><br>
+            <input type="text" name="username" id="username" placeholder="Enter your username" />
+        </p>
+        <p>
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" id="password" placeholder="Enter your password" />
+        </p>
+        <input type="submit" value="Submit" />
+    </form>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</body>
+
+</html>
