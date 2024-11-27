@@ -5,6 +5,10 @@ from flask_jwt_extended import create_access_token
 
 users_bp = Blueprint('users_bp', __name__)
 
+@users_bp.route('/', methods=['GET','POST'])
+def index():
+    return render_template('index.html')
+
 @users_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
