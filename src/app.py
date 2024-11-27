@@ -15,7 +15,7 @@ def create_app():
     # Register blueprints
     app.register_blueprint(users_bp)
 
-   # Create database schema only if not testing
+    # Create database schema only if not testing
     with app.app_context():
         if not app.config.get('TESTING', False):
             db.create_all()
