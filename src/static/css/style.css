@@ -112,3 +112,10 @@ label {
     right: 48%;
     top: 130px;
 }
+
+.welcome{
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+}

@@ -20,12 +20,14 @@
         </div>
         </div>
     </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Welcome to the Home Page!</h1>
-        <p>Hello, {{ user.username }}! You are logged in.</p>
-    </div>
+<div class="welcome">
+    <h1>Hello, {{ user.username }}!</h1>
+    <form method="POST" action="{{url_for('users_bp.get_pokemon')}}">
+        <label for="username">Tell us your favourite Pokémon:</label><br>
+        <input type="text" name="pokemon" id="pokemon" placeholder="Enter your pokemon"\>
+    </form>
+</div>
+    
 </body>
 
 </html>
