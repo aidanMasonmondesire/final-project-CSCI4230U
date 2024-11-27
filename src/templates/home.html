@@ -6,8 +6,17 @@
 </head>
 
 <body>
-    you've reached the home page
-    
+    <div class="navbar">
+        <form method="POST" action="{{ url_for('users_bp.logout') }}" onsubmit="return confirm('Are you sure you want to log out?');">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to the Home Page!</h1>
+        <p>Hello, {{ user.username }}! You are logged in.</p>
+    </div>
 </body>
 
 </html>

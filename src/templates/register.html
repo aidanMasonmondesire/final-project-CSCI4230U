@@ -17,8 +17,9 @@
             <label for="password">Password:</label><br>
             <input type="password" name="password" id="password" placeholder="Enter your password" />
         </p>
-        <input type="submit" value="Submit" class="button"/>
+        <input type="submit" value="Submit" class="button" onsubmit="return confirm('Are you sure about your credentials? These cannot be changed later.');"/>
     </form>
+    <!--
     {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
             <div class="flash-messages">
@@ -28,6 +29,7 @@
             </div>
         {% endif %}
     {% endwith %}
+    -->
 </div>
 </body>
 
