@@ -5,10 +5,12 @@ from flask_jwt_extended import create_access_token
 
 users_bp = Blueprint('users_bp', __name__)
 
+# default page of the application: gives you login or register options
 @users_bp.route('/', methods=['GET','POST'])
 def index():
     return render_template('index.html')
 
+# registration page
 @users_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def register():
 
     return render_template('register.html')
 
+# login page
 @users_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -52,6 +55,7 @@ def login():
 
     return render_template('login.html')
 
+#home page for once you actually get in
 @users_bp.route('/home')
 def home():
     return render_template('home.html')
