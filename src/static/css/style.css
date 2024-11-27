@@ -48,11 +48,30 @@ label {
     margin-right: 10px;
 }
 
-.navbar {
+.navbar{
+    display: flex;
+    position: fixed;
+    top: 0;
+    width:100%;
+    padding: 20px;
+    background: red;
+    stroke-width: 3px;
+    justify-content: center;
+    border-bottom: 15px solid black;
+    height: 115px;
+}
+
+.navbar form{
     position: absolute;
     top: 0;
-    right: 0;
+    right: 20px;
     padding: 10px;
+}
+
+#top-text{
+    color: white;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Logout button styling */
@@ -68,4 +87,28 @@ label {
 
 .logout-button:hover {
     background-color: #0056b3;
+}
+
+
+.outer-circle {
+    width: 70px; /* Diameter of the outer circle */
+    height: 70px;
+    background-color: black;
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    justify-content: center; /* Centers inner content horizontally */
+    align-items: center; /* Centers inner content vertically */
+}
+
+.inner-circle {
+    width:50px; /* Diameter of the inner circle */
+    height: 50px;
+    background-color: white;
+    border-radius: 50%; /* Makes it a circle */
+}
+
+.whole-circle{
+    position: absolute;
+    right: 48%;
+    top: 130px;
 }

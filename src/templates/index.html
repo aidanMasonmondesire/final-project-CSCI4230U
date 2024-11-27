@@ -6,8 +6,20 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <div id="top-text">
+            <h1>Pokémend</h1>
+        </div>
+        <form method="POST" action="{{ url_for('users_bp.logout') }}" onsubmit="return confirm('Are you sure you want to log out?');">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+        <div class="whole-circle">
+        <div class="outer-circle">
+            <div class="inner-circle"></div>
+        </div>
+        </div>
+    </div>
     <div class="container">
-        <h1>Welcome!</h1>
         <a href="{{ url_for('users_bp.login') }}" class="button">Login</a>
         <a href="{{ url_for('users_bp.register') }}">Sign Up</a>
     </div>
