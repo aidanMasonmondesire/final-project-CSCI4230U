@@ -1,8 +1,7 @@
 from __future__ import annotations
-from typing import List
-from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db  # Assuming db is initialized in models/__init__.py
+
 
 class User(db.Model):
     # Assuming your model fields are declared like this
@@ -40,7 +39,6 @@ class User(db.Model):
         else:
             # Ensure all elements are strings
             self.favourite_types = ','.join(str(t) for t in types)
-
 
     def get_favourite_sprite(self) -> str:
         """Get the sprite of the favorite Pokémon."""

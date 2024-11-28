@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template, redirect, url_for, flash, make_response
+from flask import Blueprint, request, render_template, redirect, url_for, flash
 from models.user import User
 from models import db
 import requests
@@ -6,10 +6,12 @@ from flask import session
 
 users_bp = Blueprint('users_bp', __name__)
 
+
 # Default page of the application: gives you login or register options
 @users_bp.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
+
 
 # Registration page
 @users_bp.route('/register', methods=['GET', 'POST'])
@@ -36,6 +38,7 @@ def register():
 
     return render_template('register.html')
 
+
 @users_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -54,6 +57,7 @@ def login():
         return redirect(url_for('users_bp.login'))
 
     return render_template('login.html')
+
 
 # Home page
 @users_bp.route('/home', methods=['GET'])
@@ -76,10 +80,11 @@ def logout():
     flash('You have been logged out.', 'success')
     return response
 
+
 # Results route for Pokémon API
 @users_bp.route('/results', methods=['POST', 'GET'])
 def results():
-   
+
     # Mapping of songs to album covers
     song_to_album = {
         "Through the Fire and Flames by DragonForce": "/static/images/fire_album.jpg",
@@ -158,7 +163,7 @@ def results():
                 elif 'fighting' in pokemon_info['types']:
                     song_suggestion = "Pink Triangle by Weezer"  # Grass-type Pokémon (example)
 
-                 # Get the corresponding album cover
+                # Get the corresponding album cover
                 album_cover = song_to_album.get(song_suggestion, "/static/images/default_album.jpg")
 
                 # Retrieve the current user from the session
@@ -183,6 +188,7 @@ def results():
                 flash('Pokémon not found. Please check the name and try again.', 'error')
 
     return render_template('results.html')
+
 
 @users_bp.route('/erase_favourite', methods=['GET', 'POST'])
 def erase_favourite():
