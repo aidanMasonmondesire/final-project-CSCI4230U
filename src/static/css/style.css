@@ -1,3 +1,5 @@
+/* Existing Styles */
+
 body {
     margin: 0;
     height: 100vh;
@@ -5,12 +7,19 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: white;
 }
 
 /* Container for the heading and buttons */
 .container {
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+    height: calc(100vh - 300px); /* Adjusts height to fill the remaining space */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in height calculations */
+    margin-top: 300px; /* Pushes content below the navbar */
 }
 
 /* Buttons styling */
@@ -26,6 +35,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    margin-top: auto; /* This pushes the button to the bottom */
 }
 
 .button:hover {
@@ -89,7 +99,6 @@ label {
     background-color: #0056b3;
 }
 
-
 .outer-circle {
     width: 70px; /* Diameter of the outer circle */
     height: 70px;
@@ -118,4 +127,83 @@ label {
     position: relative;
     top: 0;
     left: 0;
+}
+
+/* Layout for results page */
+.results {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 20px; /* Space between the Pokemon info and suggestion */
+    width: 100%;
+}
+
+.pokemon-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;  /* Adjust as necessary */
+}
+
+.pokemon-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;  /* or adjust as needed */
+    margin-right: 20px;
+}
+
+.pokemon-left img {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+.suggestion-right {
+    display: flex;
+    flex-direction: column;  /* Keeps the text and image in a column layout */
+    align-items: flex-start;
+    width: 70%;  /* Increase width of the suggestion box (previously 50%) */
+    padding: 30px;  /* Increase padding for more space inside the box */
+    background-color: #f8f8f8;  /* Light background color for the suggestion box */
+    border-radius: 8px;  /* Round the corners of the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Soft shadow around the box */
+    margin-top: 20px;  /* Space from other content */
+}
+
+.suggestion-right h3 {
+    margin-bottom: 20px;  /* Space below the title */
+    font-size: 24px;  /* Bigger title text */
+}
+
+.song-suggestion {
+    display: flex;
+    justify-content: space-between; /* Push text and image apart */
+    align-items: center; /* Vertically align both text and album cover */
+    gap: 20px; /* Add spacing between text and image */
+    width: 100%; /* Ensure it spans the entire suggestion-right container */
+}
+
+.song-text {
+    display: flex;
+    flex-direction: column; /* Stack song name and artist vertically */
+    align-items: center; /* Horizontally center the text */
+    justify-content: center; /* Vertically center the text if needed */
+    text-align: center; /* Center-align the text content */
+    width: 100%; /* Ensure it spans the container width */
+}
+
+.album-cover {
+    max-width: 150px; /* Resize album cover */
+    max-height: 150px;
+    object-fit: contain; /* Keep proportions */
+    margin-left: auto; /* Push image to the far right */
+}
+
+/* Layout for the button */
+.form-bottom {
+    margin-top: auto; /* Pushes the button to the bottom */
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

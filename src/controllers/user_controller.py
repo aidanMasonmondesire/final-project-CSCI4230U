@@ -22,6 +22,7 @@ def register():
         # Check if the user already exists
         if User.query.filter_by(username=username).first():
             flash('User already exists. Please choose a different username.', 'error')
+            print("no")
             return redirect(url_for('users_bp.register'))
 
         # Create a new user
@@ -77,7 +78,29 @@ def logout():
 @users_bp.route('/results', methods=['POST', 'GET'])
 def results():
     pokemon_info = None  # Default to no Pokémon data
-    
+
+    # Mapping of songs to album covers
+    song_to_album = {
+        "Through the Fire and Flames by DragonForce": "/static/images/fire_album.jpg",
+        "If only by The Marias": "/static/images/water_album.jpg",
+        "Master of Puppets by Metallica": "/static/images/electric_album.jpg",
+        "My Kind of Woman by Mac DeMarco": "/static/images/grass_album.jpg",
+        "Goosebumps by Travis Scott": "/static/images/ghost_album.jpg",
+        "Trust by Brent Faiyaz": "/static/images/poison_album.jpg",
+        "Cove by Basement": "/static/images/dark_album.jpg",
+        "Kingston by Faye Webster": "/static/images/fairy_album.jpg",
+        "Redbone by Childish Gambino": "/static/images/normal_album.jpg",
+        "What I've Done by Linkin Park": "/static/images/rock_album.jpg",
+        "Brain Stew by Greenday": "/static/images/ground_album.jpg",
+        "Sweet Lady by Queen": "/static/images/steel_album.jpg",
+        "King For A Day by Pierce The Veil and Kellin Quinn": "/static/images/dragon_album.jpg",
+        "TikTok by Ke$ha": "/static/images/psychic_album.jpg",
+        "Hayloft by Mother Mother": "/static/images/bug_album.jpg",
+        "PRIDE. by Kendrick Lamar": "/static/images/ice_album.jpg",
+        "Pink + White by Frank Ocean": "/static/images/flying_album.jpg",
+        "Pink Triangle by Weezer": "/static/images/fighting_album.jpg",
+    }
+
     if request.method == 'POST':
         # Handle Pokémon API request
         pokemon_name = request.form.get('pokemon', '').strip().lower()
@@ -95,7 +118,55 @@ def results():
                     'types': [t['type']['name'] for t in pokemon_data['types']],
                     'sprite': pokemon_data['sprites']['front_default']
                 }
-                return render_template('results.html', pokemon=pokemon_info)
+
+                # Determine the song based on Pokémon types
+                if 'fire' in pokemon_info['types']:
+                    song_suggestion = "Through the Fire and Flames by DragonForce"  # Fire-type Pokémon
+                elif 'water' in pokemon_info['types']:
+                    song_suggestion = "If only by The Marias"  # Water-type Pokémon
+                elif 'electric' in pokemon_info['types']:
+                    song_suggestion = "Master of Puppets by Metallica"  # Electric-type Pokémon
+                elif 'grass' in pokemon_info['types']:
+                    song_suggestion = "My Kind of Woman by Mac DeMarco"  # Grass-type Pokémon (example)
+                elif 'ghost' in pokemon_info['types']:
+                    song_suggestion = "Goosebumps by Travis Scott"  # Grass-type Pokémon (example)
+                elif 'poison' in pokemon_info['types']:
+                    song_suggestion = "Trust by Brent Faiyaz"  # Grass-type Pokémon (example)
+                elif 'dark' in pokemon_info['types']:
+                    song_suggestion = "Covet by Basement"  # Grass-type Pokémon (example)
+                elif 'fairy' in pokemon_info['types']:
+                    song_suggestion = "Kingston by Faye Webster"  # Grass-type Pokémon (example)
+                elif 'normal' in pokemon_info['types']:
+                    song_suggestion = "Redbone by Childish Gambino"  # Grass-type Pokémon (example)
+                elif 'rock' in pokemon_info['types']:
+                    song_suggestion = "What I've Done by Linkin Park"  # Grass-type Pokémon (example)
+                elif 'ground' in pokemon_info['types']:
+                    song_suggestion = "Brain Stew by Greenday"  # Grass-type Pokémon (example)
+                elif 'steel' in pokemon_info['types']:
+                    song_suggestion = "Sweet Lady by Queen"  # Grass-type Pokémon (example)
+                elif 'dragon' in pokemon_info['types']:
+                    song_suggestion = "King For A Day by Pierce The Veil and Kellin Quinn"  # Grass-type Pokémon (example)
+                elif 'psychic' in pokemon_info['types']:
+                    song_suggestion = "TikTok by Ke$ha"  # Grass-type Pokémon (example)
+                elif 'bug' in pokemon_info['types']:
+                    song_suggestion = "Hayloft by Mother Mother"  # Grass-type Pokémon (example)
+                elif 'ice' in pokemon_info['types']:
+                    song_suggestion = "PRIDE. by Kendrick Lamar"  # Grass-type Pokémon (example)
+                elif 'flying' in pokemon_info['types']:
+                    song_suggestion = "Pink + White by Frank Ocean"  # Grass-type Pokémon (example)
+                elif 'fighting' in pokemon_info['types']:
+                    song_suggestion = "Pink Triangle by Weezer"  # Grass-type Pokémon (example)
+
+                 # Get the corresponding album cover
+                album_cover = song_to_album.get(song_suggestion, "/static/images/default_album.jpg")
+                print(album_cover)
+
+                return render_template(
+                    'results.html',
+                    pokemon=pokemon_info,
+                    song_suggestion=song_suggestion,
+                    album_cover=album_cover
+                )
             else:
                 flash('Pokémon not found. Please check the name and try again.', 'error')
 

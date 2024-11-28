@@ -23,7 +23,6 @@
 <div class="container">
     <h1>Hello, {{ user.username }}!</h1>
     <form method="POST" action="{{ url_for('users_bp.results') }}">
-        <input type="hidden" name="jwt_token" value="{{ jwt_token }}">
         <label for="pokemon">Tell us your favorite Pokémon:</label><br>
         <input type="text" name="pokemon" id="pokemon" placeholder="Enter your Pokémon">
         <button type="submit" class="button">Submit</button>
