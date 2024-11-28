@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div id="top-text">
+            <h1>Pokémend</h1>
+            <p>Results Page</p>
+        </div>
+        <form method="POST" action="{{ url_for('users_bp.logout') }}" onsubmit="return confirm('Are you sure you want to log out?');">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+        <div class="whole-circle">
+            <div class="outer-circle">
+                <div class="inner-circle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="results">
+        {% if pokemon %}
+            <div class="pokemon-info">
+                <h2>{{ pokemon.name }}</h2>
+                <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}">
+                <p><strong>Type(s):</strong> {{ ', '.join(pokemon.types) }}</p>
+            </div>
+        {% else %}
+            <p>No Pokémon data available.</p>
+        {% endif %}
+    </div>
+
+    <form action="{{ url_for('users_bp.home') }}">
+        <button type="submit" class="button">Back to Home</button>
+    </form>
+</div>
+</body>
+</html>

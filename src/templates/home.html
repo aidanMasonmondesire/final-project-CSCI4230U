@@ -20,14 +20,41 @@
         </div>
         </div>
     </div>
-<div class="welcome">
+<div class="container">
     <h1>Hello, {{ user.username }}!</h1>
-    <form method="POST" action="{{url_for('users_bp.get_pokemon')}}">
-        <label for="username">Tell us your favourite Pokémon:</label><br>
-        <input type="text" name="pokemon" id="pokemon" placeholder="Enter your pokemon"\>
+    <form method="POST" action="{{ url_for('users_bp.results') }}">
+        <input type="hidden" name="jwt_token" value="{{ jwt_token }}">
+        <label for="pokemon">Tell us your favorite Pokémon:</label><br>
+        <input type="text" name="pokemon" id="pokemon" placeholder="Enter your Pokémon">
+        <button type="submit" class="button">Submit</button>
     </form>
 </div>
-    
+    <!--
+<script type="text/javascript">
+    const token = "{{ token }}";  // Flask will inject the token here
+
+    // Function to load protected content with the token in the Authorization header
+    async function loadProtectedContent() {
+        const response = await fetch('/home', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);  // Handle the response data (e.g., render it on the page)
+        } else {
+            console.error('Failed to fetch protected content.');
+        }
+    }
+
+    // Call the function when the page is loaded
+    loadProtectedContent();
+</script>
+-->
 </body>
 
 </html>
