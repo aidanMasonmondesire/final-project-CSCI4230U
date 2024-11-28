@@ -21,21 +21,39 @@
     </div>
 
     <div class="container">
-    <div class="results">
-        {% if pokemon %}
+        <div class="results">
             <div class="pokemon-info">
-                <h2>{{ pokemon.name }}</h2>
-                <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}">
-                <p><strong>Type(s):</strong> {{ ', '.join(pokemon.types) }}</p>
-            </div>
-        {% else %}
-            <p>No Pokémon data available.</p>
-        {% endif %}
-    </div>
+                {% if pokemon %}
+                    <div class="pokemon-details">
+                        <div class="pokemon-left">
+                            <h2>{{ pokemon.name }}</h2>
+                            <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}">
+                            <p><strong>Type(s):</strong> {{ ', '.join(pokemon.types) }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Suggestion Section -->
+                    <div class="suggestion-right">
+                        <h3>Based on your favourite Pokémon, we think you will like:</h3>
+                        <div class="song-suggestion">
+                            <div class="song-text">
+                                <p>{{ song_suggestion }}</p>
+                            </div>
+                            <img src="{{ album_cover }}" alt="Album Cover" class="album-cover">
+                        </div>
+                    </div>
 
-    <form action="{{ url_for('users_bp.home') }}">
-        <button type="submit" class="button">Back to Home</button>
-    </form>
-</div>
+
+
+                {% else %}
+                    <p>No Pokémon data available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <form action="{{ url_for('users_bp.home') }}">
+            <button type="submit" class="button">Back to Home</button>
+        </form>
+    </div>
 </body>
 </html>
