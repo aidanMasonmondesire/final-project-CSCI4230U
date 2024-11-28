@@ -28,6 +28,8 @@ pip install -r requirements.txt
 
 ### Architecture
 We used the MVC (Model-View-Controller) architecture for our project
-![image](https://github.com/user-attachments/assets/b549b3ec-f886-4e76-a51c-6ea49e8200ce)
+![image](https://github.com/user-attachments/assets/621f13e2-c01d-41de-aafa-f35bb406f998)
+
+
 
 
