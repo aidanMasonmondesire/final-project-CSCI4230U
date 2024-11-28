@@ -73,6 +73,7 @@ def home():
 
     return render_template('home.html', user=user)
 
+
 # Logout route
 @users_bp.route('/logout', methods=['POST'])
 def logout():
@@ -193,7 +194,7 @@ def results():
 @users_bp.route('/erase_favourite', methods=['GET', 'POST'])
 def erase_favourite():
     user_id = session.get('user_id')
-    
+
     if user_id:
         user = User.query.get(user_id)  # Fetch the user from the database
         user.set_favourite_name(None)  # Erase favourite Pokémon
