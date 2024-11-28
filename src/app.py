@@ -2,7 +2,6 @@ from flask import Flask
 from config import Config
 from models import db
 from controllers.user_controller import users_bp
-from services.auth_service import jwt
 
 def create_app():
     app = Flask(__name__)
@@ -10,7 +9,6 @@ def create_app():
     
     # Initialize extensions
     db.init_app(app)
-    jwt.init_app(app)
 
     # Register blueprints
     app.register_blueprint(users_bp)
