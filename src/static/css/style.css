@@ -19,7 +19,6 @@ body {
     height: calc(100vh - 300px); /* Adjusts height to fill the remaining space */
     padding: 20px;
     box-sizing: border-box; /* Include padding in height calculations */
-    margin-top: 300px; /* Pushes content below the navbar */
 }
 
 /* Buttons styling */
@@ -27,7 +26,7 @@ body {
     display: block;
     margin: 10px 0;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #ff3c00;
     color: white;
     text-decoration: none;
     border: none;
@@ -35,11 +34,10 @@ body {
     font-size: 16px;
     cursor: pointer;
     text-align: center;
-    margin-top: auto; /* This pushes the button to the bottom */
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
 }
 
 form {
@@ -86,8 +84,8 @@ label {
 
 /* Logout button styling */
 .logout-button {
-    background-color: #007BFF;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(255, 0, 0);
     border: none;
     padding: 8px 16px;
     font-size: 14px;
@@ -96,7 +94,10 @@ label {
 }
 
 .logout-button:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
+    color: rgb(255, 255, 255);
+    transform: scale(1.05); /* Slightly increase the size on hover */
+
 }
 
 .outer-circle {
@@ -206,4 +207,172 @@ label {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+/* Favorite Pokémon section styling */
+.favorite-pokemon {
+    background-color: #f5f5f5; /* Light gray background for a fresh look */
+    border-radius: 10px; /* Slightly larger border-radius */
+    padding: 25px; /* Increased padding for more spacing */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    width: 92%; /* Ensures full width of the column */
+    height: 315px; /* Slightly larger fixed height for more content space */
+    text-align: center;
+
+}
+
+.favorite-pokemon h2 {
+    color: #333;
+    font-size: 26px;
+    margin-bottom: 20px; /* More space below the heading */
+    font-family: 'Helvetica', sans-serif; /* Change font family for the heading */
+}
+
+.favorite-pokemon p {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.6; /* Increased line-height for better readability */
+}
+
+.favorite-pokemon img {
+    max-width: 180px; /* Slightly larger image */
+    max-height: 180px;
+    margin-top: 5px; /* Added more space above the image */
+    border-radius: 10px; /* Optional rounded corners for the image */
+}
+
+/* Button inside the form */
+.favorite-pokemon form .button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-pokemon form .button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Slightly increase the size on hover */
+}
+
+/* Modified layout for the right column containing the Favorite Pokémon section */
+.right-column {
+    flex: 0 0 380px;  /* Slightly larger column to accommodate larger content */
+    padding-left: 25px; /* Increased padding for more breathing room */
+}
+
+/* New Styles for the Two Columns (Side by Side) */
+.main-container {
+    display: flex;
+    justify-content: space-between; /* Ensure columns are spaced apart */
+    padding: 20px;
+    width: 100%;
+}
+
+.left-column {
+    font-family: 'Press Start 2P', sans-serif;
+    line-height: 1.5; /* This doubles the default line height, making the gap bigger */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);  /* Shadow effect */
+
+    flex: 1; /* All columns will have equal space */
+    padding-right: 10px; /* Reduce padding for equal spacing */
+    display: flex;
+    justify-content: center; /* Centers the text horizontally */
+    text-align: center; /* Ensures text alignment for multiline content */
+    font-size: 40px; /* Makes the text larger */
+    font-weight: bold; /* Optionally makes the text bold */
+}
+
+.middle-column {
+    flex: 1; /* Equal space with other columns */
+    padding: 0 10px; /* Add padding on both sides for consistent spacing */
+}
+
+.right-column {
+    flex: 1; /* All columns will have equal space */
+    padding-left: 10px; /* Reduce padding for equal spacing */
+    padding-right: 20px;  /* Add some padding to the right side */
+
+}
+
+.song-recommendation {
+    margin-top: 20px; /* Space from other content above */
+    display: flex;
+    flex-direction: column; /* Stack title, image, and song name vertically */
+    align-items: center; /* Center all items horizontally */
+    justify-content: center; /* Center items vertically if needed */
+    gap: 15px; /* Space between the album cover, title, and song name */
+    padding: 15px; /* Add padding around the container */
+    background-color: #f5f5f5; /* Light background to distinguish the section */
+    border-radius: 10px; /* Round the corners of the section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center; /* Center the text inside the container */
+}
+
+.song-recommendation h3 {
+    font-size: 20px; /* Title font size */
+    font-weight: bold;
+    color: #333;
+}
+
+.album-cover {
+    display: block; /* Ensure it's treated as a block-level element */
+    max-width: 150px; /* Limit the album cover size */
+    max-height: 150px;
+    object-fit: cover; /* Ensure the image fits without distortion */
+    border-radius: 8px; /* Optional rounded corners */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.song-name {
+    font-size: 16px; /* Adjust font size for song name */
+    margin-top: 10px; /* Space between album cover and song name */
+    color: #333; /* Dark text color */
+    font-weight: bold; /* Make song name bold */
+}
+
+.bottom-left-gif {
+    position: fixed;  /* Fixed position to stay at the bottom even when scrolling */
+    bottom: 10px;     /* Distance from the bottom of the screen */
+    left: 10px;       /* Distance from the left of the screen */
+    width: 300px;     /* Adjust the size of the GIF */
+    height: auto;     /* Maintain aspect ratio */
+    z-index: 999;     /* Ensure it stays above other content */
+    transform: scaleX(-1);  /* Flips the GIF horizontally */
+
+}
+
+h1 {
+    font-size: 50px;  /* Adjust the font size */
+    text-align: center;  /* Center the title */
+    margin-top: 20px;  /* Add space above the title */
+    margin-bottom: 10px;  /* Reduce space below the title */
+
+    color: rgb(255, 255, 255);  /* Change the color */
+    font-family: 'Press Start 2P', sans-serif;  /* Optional: Set a custom font */
+}
+
+.load-pic {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+.favorite-pokemon form .button {
+    background-color: #cccccc;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-pokemon form .button:hover {
+    background-color: #acacac;
+    transform: scale(1.05); /* Slightly increase the size on hover */
 }

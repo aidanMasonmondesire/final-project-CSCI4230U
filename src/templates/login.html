@@ -3,13 +3,15 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="navbar">
         <div id="top-text">
             <h1>Pokémend</h1>
-            <p>Login</p>
+            <p><strong>Login</strong></p>
         </div>
         <div class="whole-circle">
         <div class="outer-circle">
@@ -29,6 +31,9 @@
             <input type="password" name="password" id="password" placeholder="Enter your password" />
         </p>
         <input type="submit" value="Submit" class="button"/>
+    </form>
+    <form action="{{ url_for('users_bp.index') }}">
+        <button type="submit" class="button">Back</button>
     </form>
     <!--
     {% with messages = get_flashed_messages(with_categories=True) %}

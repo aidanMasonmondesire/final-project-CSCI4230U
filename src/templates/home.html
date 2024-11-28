@@ -3,57 +3,140 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        function confirmErase() {
+            if (confirm("Are you sure you want to change your favourite Pokémon?")) {
+                window.location.href = "{{ url_for('users_bp.erase_favourite') }}"; // Redirect to the route to erase the favourite
+            } else {
+                return false; // Prevent default action (form submission)
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="navbar">
         <div id="top-text">
             <h1>Pokémend</h1>
-            <p>Home Page</p>
+            <p><strong>Home Page</strong> </p>
         </div>
         <form method="POST" action="{{ url_for('users_bp.logout') }}" onsubmit="return confirm('Are you sure you want to log out?');">
             <button type="submit" class="logout-button">Logout</button>
         </form>
         <div class="whole-circle">
-        <div class="outer-circle">
-            <div class="inner-circle"></div>
-        </div>
+            <div class="outer-circle">
+                <div class="inner-circle"></div>
+            </div>
         </div>
     </div>
-<div class="container">
-    <h1>Hello, {{ user.username }}!</h1>
-    <form method="POST" action="{{ url_for('users_bp.results') }}">
-        <label for="pokemon">Tell us your favorite Pokémon:</label><br>
-        <input type="text" name="pokemon" id="pokemon" placeholder="Enter your Pokémon">
-        <button type="submit" class="button">Submit</button>
-    </form>
-</div>
-    <!--
-<script type="text/javascript">
-    const token = "{{ token }}";  // Flask will inject the token here
 
-    // Function to load protected content with the token in the Authorization header
-    async function loadProtectedContent() {
-        const response = await fetch('/home', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        });
+    <!-- Main Container with Three Columns -->
+    <div class="main-container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <h2>Hello, {{ user.username }}!</h2>
+        </div>
 
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data);  // Handle the response data (e.g., render it on the page)
-        } else {
-            console.error('Failed to fetch protected content.');
-        }
-    }
+        <!-- Middle Column (Recommended Song Section) -->
+        <div class="middle-column">
+            <div class="song-recommendation">
+                <h2>Recommended Song</h2>
+                {% if user.get_favourite_types() %}
+                    {% if 'fire' in user.get_favourite_types() %}
+                        <img src="../static/images/fire_album.jpg" alt="Fire Album Cover" class="album-cover">
+                        <p class="song-name">"Through the Fire and Flames" - DragonForce</p>
+                    {% elif 'water' in user.get_favourite_types() %}
+                        <img src="../static/images/water_album.jpg" alt="Water Album Cover" class="album-cover">
+                        <p class="song-name">"If Only" - The Marias</p>
+                    {% elif 'electric' in user.get_favourite_types() %}
+                        <img src="../static/images/electric_album.jpg" alt="Electric Album Cover" class="album-cover">
+                        <p class="song-name">"Master of Puppets" - Metallica</p>
+                    {% elif 'grass' in user.get_favourite_types() %}
+                        <img src="../static/images/grass_album.jpg" alt="Grass Album Cover" class="album-cover">
+                        <p class="song-name">"My Kind of Woman" - Mac DeMarco</p>
+                    {% elif 'ghost' in user.get_favourite_types() %}
+                        <img src="../static/images/ghost_album.jpg" alt="Ghost Album Cover" class="album-cover">
+                        <p class="song-name">"Goosebumps" - Travis Scott</p>
+                    {% elif 'poison' in user.get_favourite_types() %}
+                        <img src="../static/images/poison_album.jpg" alt="Poison Album Cover" class="album-cover">
+                        <p class="song-name">"Trust" - Brent Faiyaz</p>
+                    {% elif 'dark' in user.get_favourite_types() %}
+                        <img src="../static/images/dark_album.jpg" alt="Dark Album Cover" class="album-cover">
+                        <p class="song-name">"Cove" - Basement</p>
+                    {% elif 'fairy' in user.get_favourite_types() %}
+                        <img src="../static/images/fairy_album.jpg" alt="Fairy Album Cover" class="album-cover">
+                        <p class="song-name">"Kingston" - Faye Webster</p>
+                    {% elif 'normal' in user.get_favourite_types() %}
+                        <img src="../static/images/normal_album.jpg" alt="Normal Album Cover" class="album-cover">
+                        <p class="song-name">"Redbone" - Childish Gambino</p>
+                    {% elif 'rock' in user.get_favourite_types() %}
+                        <img src="../static/images/rock_album.jpg" alt="Rock Album Cover" class="album-cover">
+                        <p class="song-name">"What I've Done" - Linkin Park</p>
+                    {% elif 'ground' in user.get_favourite_types() %}
+                        <img src="../static/images/ground_album.jpg" alt="Ground Album Cover" class="album-cover">
+                        <p class="song-name">"Brain Stew" - Green Day</p>
+                    {% elif 'steel' in user.get_favourite_types() %}
+                        <img src="../static/images/steel_album.jpg" alt="Steel Album Cover" class="album-cover">
+                        <p class="song-name">"Sweet Lady" - Queen</p>
+                    {% elif 'dragon' in user.get_favourite_types() %}
+                        <img src="../static/images/dragon_album.jpg" alt="Dragon Album Cover" class="album-cover">
+                        <p class="song-name">"King For A Day" - Pierce The Veil & Kellin Quinn</p>
+                    {% elif 'psychic' in user.get_favourite_types() %}
+                        <img src="../static/images/psychic_album.jpg" alt="Psychic Album Cover" class="album-cover">
+                        <p class="song-name">"TikTok" - Ke$ha</p>
+                    {% elif 'bug' in user.get_favourite_types() %}
+                        <img src="../static/images/bug_album.jpg" alt="Bug Album Cover" class="album-cover">
+                        <p class="song-name">"Hayloft" - Mother Mother</p>
+                    {% elif 'ice' in user.get_favourite_types() %}
+                        <img src="../static/images/ice_album.jpg" alt="Ice Album Cover" class="album-cover">
+                        <p class="song-name">"PRIDE." - Kendrick Lamar</p>
+                    {% elif 'flying' in user.get_favourite_types() %}
+                        <img src="../static/images/flying_album.jpg" alt="Flying Album Cover" class="album-cover">
+                        <p class="song-name">"Pink + White" - Frank Ocean</p>
+                    {% elif 'fighting' in user.get_favourite_types() %}
+                        <img src="../static/images/fighting_album.jpg" alt="Fighting Album Cover" class="album-cover">
+                        <p class="song-name">"Pink Triangle" - Weezer</p>
+                    {% else %}
+                        <p>No song suggestion available for this Pokémon type.</p>
+                    {% endif %}
+                {% else %}
+                    <p>No Pokémon selected yet to recommend a song.</p>
+                {% endif %}
+            </div>
+        </div>
 
-    // Call the function when the page is loaded
-    loadProtectedContent();
-</script>
--->
+        <!-- Right Column (Favorite Pokémon Details) -->
+        <div class="right-column">
+            {% if user.get_favourite_name() is none %}
+            <div class = "favorite-pokemon">
+                <form method="POST" action="{{ url_for('users_bp.results') }}">
+                    <h2>Tell us your favourite Pokemon:</h2>
+                    <input type="text" name="pokemon" id="pokemon" placeholder="Enter your Pokémon">
+                    <button type="submit" class="button">Submit</button>
+                </form>
+            </div>
+            {% else %}
+                <div class="favorite-pokemon">
+                    <h2>Your Favorite Pokémon:</h2>
+                    <p><strong>Name:</strong> {{ user.get_favourite_name() }}</p>
+                    <p><strong>Types:</strong> {{ user.get_favourite_types() | join(', ') }}</p>
+                    <img src="{{ user.get_favourite_sprite() }}" alt="Pokemon Sprite">
+                    <!-- Edit button -->
+                    <form action="{{ url_for('users_bp.home') }}">
+                        <button onclick="confirmErase()" class="button">Edit</button>
+                    </form>
+                </div>
+            {% endif %}
+                
+            </div>
+            
+        </div>
+        <!-- Add your GIF at the bottom left of the page -->
+        <img src="../static/images/raichu.gif" alt="Bottom Left GIF" class="bottom-left-gif"/>
+
+        
+
+    </div>
 </body>
-
 </html>

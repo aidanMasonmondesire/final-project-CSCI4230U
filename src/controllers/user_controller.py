@@ -60,8 +60,10 @@ def login():
 def home():
     # Retrieve the current user from the session
     user_id = session.get('user_id')  # Assuming 'user_id' is set during login
+
     if user_id:
         user = User.query.get(user_id)  # Fetch the user from the database
+
     else:
         user = None  # No user logged in
 
@@ -77,8 +79,7 @@ def logout():
 # Results route for Pokémon API
 @users_bp.route('/results', methods=['POST', 'GET'])
 def results():
-    pokemon_info = None  # Default to no Pokémon data
-
+   
     # Mapping of songs to album covers
     song_to_album = {
         "Through the Fire and Flames by DragonForce": "/static/images/fire_album.jpg",
@@ -159,7 +160,18 @@ def results():
 
                  # Get the corresponding album cover
                 album_cover = song_to_album.get(song_suggestion, "/static/images/default_album.jpg")
-                print(album_cover)
+
+                # Retrieve the current user from the session
+                user_id = session.get('user_id')  # Assuming 'user_id' is set during login
+
+                if user_id:
+                    user = User.query.get(user_id)  # Fetch the user from the database
+                    # Assuming 'user' is a User instance
+                    user.set_favourite_name(pokemon_info['name'])
+                    user.set_favourite_types(pokemon_info['types'])
+                    user.set_favourite_sprite(pokemon_info['sprite'])
+
+                    db.session.commit()  # Save to database
 
                 return render_template(
                     'results.html',
@@ -171,3 +183,21 @@ def results():
                 flash('Pokémon not found. Please check the name and try again.', 'error')
 
     return render_template('results.html')
+
+@users_bp.route('/erase_favourite', methods=['GET', 'POST'])
+def erase_favourite():
+    user_id = session.get('user_id')
+    
+    if user_id:
+        user = User.query.get(user_id)  # Fetch the user from the database
+        user.set_favourite_name(None)  # Erase favourite Pokémon
+        user.set_favourite_types(None)  # Erase favourite Pokémon types
+        user.set_favourite_sprite(None)  # Erase favourite Pokémon sprite
+        print(user.get_favourite_name)
+
+        db.session.commit()  # Save changes to the database
+        flash('Your favourite Pokémon has been erased!', 'success')
+        return redirect(url_for('users_bp.home'))  # Redirect to the home page
+
+    flash('You must be logged in to erase your favourite Pokémon.', 'error')
+    return redirect(url_for('users_bp.login'))  # Redirect to login if not logged in
