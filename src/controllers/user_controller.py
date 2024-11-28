@@ -22,6 +22,7 @@ def register():
         # Check if the user already exists
         if User.query.filter_by(username=username).first():
             flash('User already exists. Please choose a different username.', 'error')
+            print("no")
             return redirect(url_for('users_bp.register'))
 
         # Create a new user
@@ -73,6 +74,7 @@ def logout():
     flash('You have been logged out.', 'success')
     return response
 
+# Results route for Pokémon API
 @users_bp.route('/results', methods=['POST', 'GET'])
 def results():
     pokemon_info = None  # Default to no Pokémon data
@@ -118,52 +120,46 @@ def results():
                 }
 
                 # Determine the song based on Pokémon types
-                song_suggestion = None
                 if 'fire' in pokemon_info['types']:
-                    song_suggestion = "Through the Fire and Flames by DragonForce"
+                    song_suggestion = "Through the Fire and Flames by DragonForce"  # Fire-type Pokémon
                 elif 'water' in pokemon_info['types']:
-                    song_suggestion = "If only by The Marias"
+                    song_suggestion = "If only by The Marias"  # Water-type Pokémon
                 elif 'electric' in pokemon_info['types']:
-                    song_suggestion = "Master of Puppets by Metallica"
+                    song_suggestion = "Master of Puppets by Metallica"  # Electric-type Pokémon
                 elif 'grass' in pokemon_info['types']:
-                    song_suggestion = "My Kind of Woman by Mac DeMarco"
+                    song_suggestion = "My Kind of Woman by Mac DeMarco"  # Grass-type Pokémon (example)
                 elif 'ghost' in pokemon_info['types']:
-                    song_suggestion = "Goosebumps by Travis Scott"
+                    song_suggestion = "Goosebumps by Travis Scott"  # Grass-type Pokémon (example)
                 elif 'poison' in pokemon_info['types']:
-                    song_suggestion = "Trust by Brent Faiyaz"
+                    song_suggestion = "Trust by Brent Faiyaz"  # Grass-type Pokémon (example)
                 elif 'dark' in pokemon_info['types']:
-                    song_suggestion = "Cove by Basement"
+                    song_suggestion = "Covet by Basement"  # Grass-type Pokémon (example)
                 elif 'fairy' in pokemon_info['types']:
-                    song_suggestion = "Kingston by Faye Webster"
+                    song_suggestion = "Kingston by Faye Webster"  # Grass-type Pokémon (example)
                 elif 'normal' in pokemon_info['types']:
-                    song_suggestion = "Redbone by Childish Gambino"
+                    song_suggestion = "Redbone by Childish Gambino"  # Grass-type Pokémon (example)
                 elif 'rock' in pokemon_info['types']:
-                    song_suggestion = "What I've Done by Linkin Park"
+                    song_suggestion = "What I've Done by Linkin Park"  # Grass-type Pokémon (example)
                 elif 'ground' in pokemon_info['types']:
-                    song_suggestion = "Brain Stew by Greenday"
+                    song_suggestion = "Brain Stew by Greenday"  # Grass-type Pokémon (example)
                 elif 'steel' in pokemon_info['types']:
-                    song_suggestion = "Sweet Lady by Queen"
+                    song_suggestion = "Sweet Lady by Queen"  # Grass-type Pokémon (example)
                 elif 'dragon' in pokemon_info['types']:
-                    song_suggestion = "King For A Day by Pierce The Veil and Kellin Quinn"
+                    song_suggestion = "King For A Day by Pierce The Veil and Kellin Quinn"  # Grass-type Pokémon (example)
                 elif 'psychic' in pokemon_info['types']:
-                    song_suggestion = "TikTok by Ke$ha"
+                    song_suggestion = "TikTok by Ke$ha"  # Grass-type Pokémon (example)
                 elif 'bug' in pokemon_info['types']:
-                    song_suggestion = "Hayloft by Mother Mother"
+                    song_suggestion = "Hayloft by Mother Mother"  # Grass-type Pokémon (example)
                 elif 'ice' in pokemon_info['types']:
-                    song_suggestion = "PRIDE. by Kendrick Lamar"
+                    song_suggestion = "PRIDE. by Kendrick Lamar"  # Grass-type Pokémon (example)
                 elif 'flying' in pokemon_info['types']:
-                    song_suggestion = "Pink + White by Frank Ocean"
+                    song_suggestion = "Pink + White by Frank Ocean"  # Grass-type Pokémon (example)
                 elif 'fighting' in pokemon_info['types']:
-                    song_suggestion = "Pink Triangle by Weezer"
+                    song_suggestion = "Pink Triangle by Weezer"  # Grass-type Pokémon (example)
 
-                # Get the corresponding album cover
+                 # Get the corresponding album cover
                 album_cover = song_to_album.get(song_suggestion, "/static/images/default_album.jpg")
-
-                # Debugging statements
-                print(f"Selected Pokémon: {pokemon_info['name']}")
-                print(f"Types: {pokemon_info['types']}")
-                print(f"Song Suggestion: {song_suggestion}")
-                print(f"Album Cover: {album_cover}")
+                print(album_cover)
 
                 return render_template(
                     'results.html',
@@ -175,4 +171,3 @@ def results():
                 flash('Pokémon not found. Please check the name and try again.', 'error')
 
     return render_template('results.html')
-
