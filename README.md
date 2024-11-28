@@ -20,11 +20,11 @@ pip install -r requirements.txt
 4. Navigate to app.py and run it.
 5. Open 'http://127.0.0.1:5555' on your browser.
 ### API Endpoints
-`\` - `GET` Root endpoint, brings you to the welcome page of the website
-`\register` - `GET` Register endpoint, brings you to the page to sign up for an account (submit button calls `POST` and sends you to `\login`)
-`\login` - `GET` Login endpoint, the page where you can login if you've already created an account (submit button calls `POST` and sends you to `\home`)
-`\home` - `GET` Home page endpoint, welcomes the user and prompts for pokemon. (submit button calls `POST` and sends to `\results`)
-`\results` - `GET` Result page for the search, gives you the song recommendation for the pokemon
+`\` - `GET` Root endpoint, brings you to the welcome page of the website<br/>
+`\register` - `GET` Register endpoint, brings you to the page to sign up for an account (submit button calls `POST` and sends you to `\login`)<br/>
+`\login` - `GET` Login endpoint, the page where you can login if you've already created an account (submit button calls `POST` and sends you to `\home`)<br/>
+`\home` - `GET` Home page endpoint, welcomes the user and prompts for pokemon. (submit button calls `POST` and sends to `\results`)<br/>
+`\results` - `GET` Result page for the search, gives you the song recommendation for the pokemon<br/>
 
 ### Architecture
 We used the MVC (Model-View-Controller) architecture for our project
