@@ -19,6 +19,20 @@ pip install -r requirements.txt
 ```
 4. Navigate to app.py and run it.
 5. Open 'http://127.0.0.1:5555' on your browser.
+
+##### Run with Docker
+Prerequisites: Install Docker Desktop from  [https://www.docker.com/get-started]
+1.  Clone the repository.
+```
+git clone https://github.com/aidanMasonmondesire/final-project-CSCI4230U
+```
+2. Navigate to the root of the directory.
+3. Open terminal and run `docker build -t pokemend .` to create the image
+4. Then run the container with `docker run -d -p 5555:5555 pokemend`
+5. Type `docker ps` to get the `CONTAINER ID`
+6. use the `CONTAINER ID` to run `docker logs CONTAINER ID`
+7. from there it should tell you where the server is running, follow the link and it will bring you to the website!
+
 ### API Endpoints
 `\` - `GET` Root endpoint, brings you to the welcome page of the website<br/>
 `\register` - `GET` Register endpoint, brings you to the page to sign up for an account (submit button calls `POST` and sends you to `\login`)<br/>
