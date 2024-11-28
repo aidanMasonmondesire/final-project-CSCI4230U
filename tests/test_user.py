@@ -3,8 +3,8 @@ def test_registration(client):
         'username': 'testuser',
         'password': 'testpass'
     })
-    assert response.status_code == 201
-    assert response.get_json()['message'] == 'User registered successfully'
+    assert response.status_code == 302
+    assert response.location.endswith('/login')
 
 def test_user_login(client):
     client.post('/register', json={
@@ -15,8 +15,8 @@ def test_user_login(client):
         'username': 'testuser',
         'password': 'testpass'
     })
-    assert response.status_code == 200
-    assert 'access_token' in response.get_json()
+    assert response.status_code == 302
+    assert response.location.endswith('/home') 
 
 
 
