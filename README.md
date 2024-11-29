@@ -1,5 +1,5 @@
 # Final Project for CSCI4230U - Pokémend
-## By Aidan Mason-Mondesire & Jade Nguyen
+## By Aidan Mason-Mondesire (100821742) & Jade Nguyen (100820863)
 
 ### About the Project
 This is the final project for CSCI4230U in which we made a web application that uses Pokéapi to retrieve the information about a pokémon of the users choice,
