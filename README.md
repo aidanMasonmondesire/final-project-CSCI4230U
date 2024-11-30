@@ -42,7 +42,8 @@ git clone https://github.com/aidanMasonmondesire/final-project-CSCI4230U
 
 ### Architecture
 We used the MVC (Model-View-Controller) architecture for our project
-![image](https://github.com/user-attachments/assets/621f13e2-c01d-41de-aafa-f35bb406f998)
+![image](![image](https://github.com/user-attachments/assets/c32a3b3b-ae20-467b-bf12-e85a64f13135)
+
 
 ### Performance Review
 ![image](https://github.com/user-attachments/assets/28dc5e41-b87a-4ed3-a587-d6dfe87a2126)
