@@ -44,6 +44,8 @@ git clone https://github.com/aidanMasonmondesire/final-project-CSCI4230U
 We used the MVC (Model-View-Controller) architecture for our project
 ![image](https://github.com/user-attachments/assets/621f13e2-c01d-41de-aafa-f35bb406f998)
 
-
+### Performance Review
+![image](https://github.com/user-attachments/assets/28dc5e41-b87a-4ed3-a587-d6dfe87a2126)
+Performance is very good based on the website's standards. The only problems with it were accessibility in terms of some of the html code, certain tags and labels were'nt included that should have been. (The project has been deployed through [render.com] but goes down after a period of time so is not currently able to be accessed)
 
 
